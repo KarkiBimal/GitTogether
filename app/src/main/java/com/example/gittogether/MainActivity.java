@@ -66,41 +66,41 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        profileImage = findViewById(R.id.profile_pic);
-        changePic = (TextView) findViewById(R.id.change_pic);
-        uploadPic = (TextView) findViewById(R.id.upload_pic);
+//        profileImage = findViewById(R.id.profile_pic);
+//        changePic = (TextView) findViewById(R.id.change_pic);
+//        uploadPic = (TextView) findViewById(R.id.upload_pic);
+//
+//        userEmail=(TextView) findViewById(R.id.email);
+//        name=(TextView) findViewById(R.id.name);
+//        lastname=(TextView) findViewById(R.id.lastName);
 
-        userEmail=(TextView) findViewById(R.id.email);
-        name=(TextView) findViewById(R.id.name);
-        lastname=(TextView) findViewById(R.id.lastName);
-
-
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds: snapshot.getChildren()){
-                    if(ds.child("email").getValue().equals(email)){
-                          userEmail.setText(ds.child("email").getValue(String.class));
-                        name.setText(ds.child("firstName").getValue(String.class));
-                        lastname.setText(ds.child("lastName").getValue(String.class));
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-        changePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                  chooseImage();
-
-            }
-        });
+//
+//        userRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for(DataSnapshot ds: snapshot.getChildren()){
+//                    if(ds.child("email").getValue().equals(email)){
+//                          userEmail.setText(ds.child("email").getValue(String.class));
+//                        name.setText(ds.child("firstName").getValue(String.class));
+//                        lastname.setText(ds.child("lastName").getValue(String.class));
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+//
+//        changePic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                  chooseImage();
+//
+//            }
+//        });
 
 //       uploadPic.setOnClickListener(new View.OnClickListener() {
 //          @Override
@@ -112,27 +112,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void chooseImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
-            filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                profileImage.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private void chooseImage() {
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+//                && data != null && data.getData() != null) {
+//            filePath = data.getData();
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                profileImage.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 //    private void uploadImage() {
 //        if (filePath != null) {
