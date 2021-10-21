@@ -13,6 +13,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,9 +35,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import android.widget.Toast;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,10 +55,13 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
+    private FirebaseAuth.AuthStateListener mAuthListner;
 
     TextView userEmail, name, lastname;
     private static final String USERS="users";
     String email;
+    FirebaseUser cUser;
+    String uId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,39 +70,52 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         email=intent.getStringExtra("email");
-
+        userEmail=(TextView) findViewById(R.id.email);
+        name=(TextView) findViewById(R.id.name);
+        cUser=FirebaseAuth.getInstance().getCurrentUser();
+        uId=cUser.getUid();
         database= FirebaseDatabase.getInstance();
-        userRef=database.getReference(USERS);
+        userRef=database.getReference(USERS).child(uId);
 
+   mAuthListner=new FirebaseAuth.AuthStateListener() {
+       @Override
+       public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+           FirebaseUser cUser=firebaseAuth.getCurrentUser();
+           if(cUser != null){
+               Log.d(TAG, "onAuthStateChanged: "+ cUser.getUid());
+           }else{
+               Log.d(TAG, "onAuthStateChanged:Signed out ");
+           }
+       }
+   };
 
 
 //        profileImage = findViewById(R.id.profile_pic);
 //        changePic = (TextView) findViewById(R.id.change_pic);
 //        uploadPic = (TextView) findViewById(R.id.upload_pic);
 //
-//        userEmail=(TextView) findViewById(R.id.email);
-//        name=(TextView) findViewById(R.id.name);
-//        lastname=(TextView) findViewById(R.id.lastName);
 
-//
-//        userRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot ds: snapshot.getChildren()){
-//                    if(ds.child("email").getValue().equals(email)){
-//                          userEmail.setText(ds.child("email").getValue(String.class));
-//                        name.setText(ds.child("firstName").getValue(String.class));
-//                        lastname.setText(ds.child("lastName").getValue(String.class));
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//
+        //lastname=(TextView) findViewById(R.id.lastName);
+
+
+
+
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Log.i(TAG, "onDataChange:"+ dataSnapshot.child("bob").getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 //
 //        changePic.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -111,14 +134,14 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-
+//
 //    private void chooseImage() {
 //        Intent intent = new Intent();
 //        intent.setType("image/*");
 //        intent.setAction(Intent.ACTION_GET_CONTENT);
 //        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
 //    }
-//
+
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
@@ -198,3 +221,4 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 }
+

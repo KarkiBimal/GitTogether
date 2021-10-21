@@ -1,6 +1,7 @@
 package com.example.gittogether;
 
 public class User {
+
     public String firstName, lastName, email;
 
     public User() {
