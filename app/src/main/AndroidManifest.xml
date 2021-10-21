@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gittogether">
-<!--    <permission android:name=".permission.C2D_MESSAGE" android:protectionLevel="signature" />-->
-<!--    <uses-permission android:name=".permission.C2D_MESSAGE" />-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GitTogether">
+
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@xml/actions"
-             />
+            android:resource="@xml/actions" />
 
         <activity android:name=".profile_page" />
         <activity android:name=".EmailResetActivity" />
@@ -27,7 +26,6 @@
         </activity>
         <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
-
     </application>
 
 </manifest>

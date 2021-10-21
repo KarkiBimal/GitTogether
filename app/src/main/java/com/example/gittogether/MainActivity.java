@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListner;
 
     TextView userEmail, name, lastname;
-    private static final String USERS="users";
+    private static final String USERS="Users";
     String email;
     FirebaseUser cUser;
     String uId;
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         cUser=FirebaseAuth.getInstance().getCurrentUser();
         uId=cUser.getUid();
         database= FirebaseDatabase.getInstance();
-        userRef=database.getReference(USERS).child(uId);
+        userRef=database.getReference(USERS);
 
    mAuthListner=new FirebaseAuth.AuthStateListener() {
        @Override
@@ -96,16 +96,20 @@ public class MainActivity extends AppCompatActivity {
 //
 
         //lastname=(TextView) findViewById(R.id.lastName);
+        userEmail=(TextView) findViewById(R.id.email);
+        name=(TextView) findViewById(R.id.name);
 
-
-
-
-
+//
+//
+//
+//
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                name.setText(dataSnapshot.child(uId).child("firstName").getValue(String.class));
+                userEmail.setText(dataSnapshot.child(uId).child("email").getValue(String.class));
+                Log.i(TAG, "onDataChange:"+ dataSnapshot.child(uId).child("email").getValue(String.class));
 
-                Log.i(TAG, "onDataChange:"+ dataSnapshot.child("bob").getValue());
             }
 
             @Override
