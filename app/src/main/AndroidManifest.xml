@@ -10,12 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GitTogether">
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
 
-        <activity android:name=".profile_page" />
+        <activity android:name=".ProfilePage" />
         <activity android:name=".EmailResetActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -25,7 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
