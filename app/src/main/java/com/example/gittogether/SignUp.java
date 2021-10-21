@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText editTextFirstName,  editTextLastName,  editTextEmail,  editTextPassword, editTextRepeatPassword, editTextHobby1, editTextHobby2
+    private EditText editTextFirstName,  editTextLastName,  editTextEmail,  editTextPassword, editTextHobby1, editTextHobby2
             , editTextHobby3, editTextAddress;
     private Button registerUser;
     private FirebaseAuth mAuth;
@@ -78,7 +78,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         String hobby3=editTextHobby3.getText().toString().trim();
         String address=editTextAddress.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
-        String repeatPassword=editTextRepeatPassword.getText().toString().trim();
+
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -135,11 +135,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         }
 
 
-        if(repeatPassword.isEmpty()){
-            editTextRepeatPassword.setError("You Idiot....");
-            editTextRepeatPassword.requestFocus();
-            return;
-        }
+
 
 
         mAuth.createUserWithEmailAndPassword(email, password)
