@@ -2,15 +2,19 @@ package com.example.gittogether;
 
 public class User {
 
-    public String firstName, lastName, email;
+    public String firstName, lastName, email, hobby1, hobby2, hobby3, address;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email){
+    public User(String firstName, String lastName, String email, String hobby1, String hobby2, String hobby3, String address){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
+        this.hobby1=hobby1;
+        this.hobby2=hobby2;
+        this.hobby3=hobby3;
+        this.address=address;
 
 
 

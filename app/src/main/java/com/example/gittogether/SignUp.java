@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +22,8 @@ import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText editTextFirstName,  editTextLastName,  editTextEmail,  editTextPassword, editTextRepeatPassword;
+    private EditText editTextFirstName,  editTextLastName,  editTextEmail,  editTextPassword, editTextRepeatPassword, editTextHobby1, editTextHobby2
+            , editTextHobby3, editTextAddress;
     private Button registerUser;
     private FirebaseAuth mAuth;
     @Override
@@ -45,8 +47,17 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         editTextPassword=(EditText) findViewById(R.id.et_password);
         editTextPassword.setOnClickListener(this);
 
-        editTextRepeatPassword=(EditText) findViewById(R.id.et_repeat_password);
-        editTextRepeatPassword.setOnClickListener(this);
+        editTextHobby1=(EditText) findViewById(R.id.et_hobby_1);
+        editTextHobby1.setOnClickListener(this);
+
+        editTextHobby2=(EditText) findViewById(R.id.et_hobby_2);
+        editTextHobby2.setOnClickListener(this);
+
+        editTextHobby3=(EditText) findViewById(R.id.et_hobby_3);
+        editTextHobby3.setOnClickListener(this);
+
+        editTextAddress=(EditText) findViewById(R.id.et_address);
+        editTextAddress.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +73,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         String email=editTextEmail.getText().toString().trim();
         String firstName=editTextFirstName.getText().toString().trim();
         String lastName=editTextLastName.getText().toString().trim();
+        String hobby1=editTextHobby1.getText().toString().trim();
+        String hobby2=editTextHobby2.getText().toString().trim();
+        String hobby3=editTextHobby3.getText().toString().trim();
+        String address=editTextAddress.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
         String repeatPassword=editTextRepeatPassword.getText().toString().trim();
 
@@ -94,6 +109,32 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             editTextPassword.requestFocus();
             return;
         }
+
+        if(hobby1.isEmpty()){
+            editTextHobby1.setError("You Idiot....");
+            editTextHobby1.requestFocus();
+            return;
+        }
+
+        if(hobby2.isEmpty()){
+            editTextHobby2.setError("You Idiot....");
+            editTextHobby2.requestFocus();
+            return;
+        }
+
+        if(hobby3.isEmpty()){
+            editTextHobby3.setError("You Idiot....");
+            editTextHobby3.requestFocus();
+            return;
+        }
+
+        if(address.isEmpty()){
+            editTextAddress.setError("You Idiot....");
+            editTextAddress.requestFocus();
+            return;
+        }
+
+
         if(repeatPassword.isEmpty()){
             editTextRepeatPassword.setError("You Idiot....");
             editTextRepeatPassword.requestFocus();
@@ -106,7 +147,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user=new User(firstName, lastName, email);
+                            User user=new User(firstName, lastName, email, hobby1,hobby2, hobby3, address );
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
