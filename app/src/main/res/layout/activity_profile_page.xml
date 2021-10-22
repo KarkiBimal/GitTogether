@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ProfilePage">
 
     <RelativeLayout
@@ -19,8 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            >
+            android:background="#FFFFFF">
 
             <com.google.android.material.imageview.ShapeableImageView
 
@@ -44,12 +48,12 @@
             android:layout_below="@+id/imgUser"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
+            android:background="@color/white"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            android:background="@color/design_default_color_error"
+            android:gravity="center"
             android:text="Name"
-            android:gravity="center"/>
+            android:textColor="#070707"
+            android:textSize="32sp" />
 
 
     </RelativeLayout>
@@ -60,12 +64,13 @@
         android:layout_height="50dp"
         android:layout_marginTop="215dp"
         android:layout_marginBottom="400dp"
-        android:orientation="vertical"
-        android:background="@color/design_default_color_error">
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Update Picture" />
     </LinearLayout>
@@ -75,13 +80,15 @@
         android:layout_height="50dp"
         android:layout_marginTop="270dp"
         android:layout_marginBottom="400dp"
-        android:orientation="vertical"
-        android:background="@color/design_default_color_error">
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Upload Picture" />
     </LinearLayout>
 
@@ -95,6 +102,8 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:gravity="center"
             android:text="Email"
             android:textColor="#090808"
             android:textSize="24sp" />
@@ -103,36 +112,57 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:gravity="center"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:gravity="center"
             android:text="Address"
             android:textColor="#0B0808"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/address_1"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:gravity="center"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/address"
+            android:id="@+id/hobby_t"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Hobby"
             android:textColor="#040404"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/hobby1"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:gravity="center"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/hobby2"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:gravity="center"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/hobby3"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:gravity="center"
             android:text="TextView" />
     </LinearLayout>
 
 </RelativeLayout>
 
+</ScrollView>

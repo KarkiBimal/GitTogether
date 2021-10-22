@@ -24,7 +24,7 @@ public class ProfilePage extends AppCompatActivity {
     private FirebaseDatabase database;
 
 
-    TextView userEmail, name, lastname;
+    TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3;
     private static final String USERS="Users";
     String email;
     FirebaseUser cUser;
@@ -36,6 +36,10 @@ public class ProfilePage extends AppCompatActivity {
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
+        address=(TextView) findViewById(R.id.address_1);
+        hobby1=(TextView) findViewById(R.id.hobby1);
+        hobby2=(TextView) findViewById(R.id.hobby2);
+        hobby3=(TextView) findViewById(R.id.hobby3);
         cUser= FirebaseAuth.getInstance().getCurrentUser();
         uId=cUser.getUid();
         database= FirebaseDatabase.getInstance();
@@ -53,6 +57,10 @@ public class ProfilePage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 name.setText(dataSnapshot.child(uId).child("firstName").getValue(String.class));
                 userEmail.setText(dataSnapshot.child(uId).child("email").getValue(String.class));
+                address.setText(dataSnapshot.child(uId).child("address").getValue(String.class));
+                hobby1.setText(dataSnapshot.child(uId).child("hobby1").getValue(String.class));
+                hobby2.setText(dataSnapshot.child(uId).child("hobby2").getValue(String.class));
+                hobby3.setText(dataSnapshot.child(uId).child("hobby3").getValue(String.class));
                 Log.i(TAG, "onDataChange:"+ dataSnapshot.child(uId).child("email").getValue(String.class));
 
             }
