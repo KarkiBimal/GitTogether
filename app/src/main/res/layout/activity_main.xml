@@ -15,19 +15,15 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/MainActivity"
-            layout="@layout/nav_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            layout="@layout/main_toolbar"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MainRecyclerView"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Home"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
     </LinearLayout>
 
@@ -35,10 +31,10 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white">
+        android:background="@color/colorPrimary">
 
         <include
-            layout="@layout/nav_drawer"/>
+            layout="@layout/main_nav_drawer"/>
 
     </RelativeLayout>
 
