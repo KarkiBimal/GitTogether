@@ -1,27 +1,15 @@
 package com.example.gittogether;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,20 +17,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import static android.content.ContentValues.TAG;
 
 public class ProfilePage extends AppCompatActivity {
-    private Button editProfile;
     private TextView changePic, uploadPic;
-    private StorageReference storageReference;
-    private StorageReference photoReference;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
-    private ImageView profilePicture;
     DrawerLayout drawerLayout;
 
 
@@ -69,28 +50,13 @@ public class ProfilePage extends AppCompatActivity {
         uId=cUser.getUid();
         database= FirebaseDatabase.getInstance();
         userRef=database.getReference(USERS);
-        profilePicture = findViewById(R.id.profile_pic);
-        editProfile = (Button) findViewById(R.id.updatePicButton);
-        storageReference = FirebaseStorage.getInstance().getReference();
-        photoReference= storageReference.child("users/" + uId + "/profile.jpg");
+
+//        profileImage = findViewById(R.id.profile_pic);
+//        changePic = (TextView) findViewById(R.id.change_pic);
+//        uploadPic = (TextView) findViewById(R.id.upload_pic);
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
-
-        final long ONE_MEGABYTE = 1024 * 1024;
-        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                profilePicture.setImageBitmap(bmp);
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                //Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
-            }
-        });
 
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -111,54 +77,37 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.redirectActivity(ProfilePage.this, EditProfilePageActivity.class);
-            }
-        });
-
     }
 
     public void ClickMenu(View view){
         //open drawer
-        Navigation.openDrawer(drawerLayout);
+        MainActivity.openDrawer(drawerLayout);
     }
 
     public void ClickLogo(View view){
         //close drawer
-        Navigation.closeDrawer(drawerLayout);
+        MainActivity.closeDrawer(drawerLayout);
     }
 
     public void ClickHome(View view){
         //Redirect activity to home
-        Navigation.redirectActivity(this, MainActivity.class);
+        MainActivity.redirectActivity(this, MainActivity.class);
     }
 
-    public void ClickPost(View view){
-        //Redirect activity to home
-        Navigation.redirectActivity(this, PostActivity.class);
-    }
-
-    public void ClickMessage(View view){
-        //Redirect activity to Messages
-        Navigation.redirectActivity(this, MessageActivity.class);
-    }
-
-    public void ClickProfile(View view){
+    public void ClickProfilePage(View view){
         //recreate activity
         recreate();
     }
 
     public void ClickLogout(View view){
         //close app
-        Navigation.logout(this);
+        MainActivity.logout(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //close drawer
-        Navigation.closeDrawer(drawerLayout);
+        MainActivity.closeDrawer(drawerLayout);
     }
 }
