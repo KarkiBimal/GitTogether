@@ -1,14 +1,116 @@
 package com.example.gittogether;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    //Initialize variable
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Assign variable
+        drawerLayout = findViewById(R.id.drawer_layout);
+    }
+
+    public void ClickMenu(View view){
+        //Open drawer
+        openDrawer(drawerLayout);
+    }
+
+    private static void openDrawer(DrawerLayout drawerLayout) {
+        //Open drawer layout
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickLogo(View view){
+        //Close drawer
+        closeDrawer(drawerLayout);
+    }
+
+    private static void closeDrawer(DrawerLayout drawerLayout) {
+        //Close drawer layout
+        //Check condition
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            //When drawer is open
+            //Close drawer
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    public void ClickHome(View view){
+        //Recreate activity
+        recreate();
+    }
+
+    public void ClickPost(View view){
+        //Redirect activity to post
+        redirectActivity(this, Post.class);
+    }
+
+    public void ClickProfile(View view){
+        //Redirect activity to profile
+        redirectActivity(this, ProfilePage.class);
+    }
+
+    public void ClickLogout(View view){
+        //close app
+        logout(this);
+    }
+
+    private static void logout(Activity activity) {
+        //Initialize alert dialogue
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        //set title
+        builder.setTitle("Logout");
+        //set message
+        builder.setMessage("Are you sure you want to logout?");
+        //positive yes button
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //finish activity
+                activity.finishAffinity();
+                //exit app
+                System.exit(0);
+            }
+        });
+        //Negative no button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Dismiss dialogue
+                dialog.dismiss();
+            }
+        });
+        //show dialogue
+        builder.show();
+    }
+
+    private static void redirectActivity(Activity activity, Class aClass) {
+        //Initialize intent
+        Intent intent = new Intent(activity, aClass);
+        //set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //start activity
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //close drawer
+        closeDrawer(drawerLayout);
     }
 }
