@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         openDrawer(drawerLayout);
     }
 
-    private static void openDrawer(DrawerLayout drawerLayout) {
+    public static void openDrawer(DrawerLayout drawerLayout) {
         //Open drawer layout
         drawerLayout.openDrawer(GravityCompat.START);
     }
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         closeDrawer(drawerLayout);
     }
 
-    private static void closeDrawer(DrawerLayout drawerLayout) {
+    public static void closeDrawer(DrawerLayout drawerLayout) {
         //Close drawer layout
         //Check condition
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         logout(this);
     }
 
-    private static void logout(Activity activity) {
+    public static void logout(Activity activity) {
         //Initialize alert dialogue
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //set title
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private static void redirectActivity(Activity activity, Class aClass) {
+    public static void redirectActivity(Activity activity, Class aClass) {
         //Initialize intent
         Intent intent = new Intent(activity, aClass);
         //set flag

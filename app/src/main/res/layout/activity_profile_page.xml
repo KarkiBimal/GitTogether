@@ -22,8 +22,7 @@
         android:layout_gravity="start"
         android:background="@color/white">
 
-        <include
-            layout="@layout/main_nav_drawer"/>
+        <include layout="@layout/main_nav_drawer" />
     </RelativeLayout>
 
 <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,7 +40,7 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/my_border"
+
         android:paddingBottom="20dp">
 
         <RelativeLayout

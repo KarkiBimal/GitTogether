@@ -3,10 +3,12 @@ package com.example.gittogether;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +24,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView changePic, uploadPic;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
+    DrawerLayout drawerLayout;
 
 
     TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3;
@@ -33,6 +36,9 @@ public class ProfilePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
+
+        //assign variable
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
@@ -73,4 +79,35 @@ public class ProfilePage extends AppCompatActivity {
 
     }
 
+    public void ClickMenu(View view){
+        //open drawer
+        MainActivity.openDrawer(drawerLayout);
+    }
+
+    public void ClickLogo(View view){
+        //close drawer
+        MainActivity.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view){
+        //Redirect activity to home
+        MainActivity.redirectActivity(this, MainActivity.class);
+    }
+
+    public void ClickProfilePage(View view){
+        //recreate activity
+        recreate();
+    }
+
+    public void ClickLogout(View view){
+        //close app
+        MainActivity.logout(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //close drawer
+        MainActivity.closeDrawer(drawerLayout);
+    }
 }
