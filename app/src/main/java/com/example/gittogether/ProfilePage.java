@@ -94,6 +94,11 @@ public class ProfilePage extends AppCompatActivity {
         MainActivity.redirectActivity(this, MainActivity.class);
     }
 
+    /*public void ClickPost(View view){
+        //Redirect activity to home
+        MainActivity.redirectActivity(this, Post.class);
+    }*/
+
     public void ClickProfilePage(View view){
         //recreate activity
         recreate();
