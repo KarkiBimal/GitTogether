@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         recreate();
     }
 
-    public void ClickPost(View view){
+    /*public void ClickPost(View view){
         //Redirect activity to post
         redirectActivity(this, Post.class);
-    }
+    }*/
 
     public void ClickProfile(View view){
         //Redirect activity to profile
