@@ -81,22 +81,22 @@ public class ProfilePage extends AppCompatActivity {
 
     public void ClickMenu(View view){
         //open drawer
-        MainActivity.openDrawer(drawerLayout);
+        Navigation.openDrawer(drawerLayout);
     }
 
     public void ClickLogo(View view){
         //close drawer
-        MainActivity.closeDrawer(drawerLayout);
+        Navigation.closeDrawer(drawerLayout);
     }
 
     public void ClickHome(View view){
         //Redirect activity to home
-        MainActivity.redirectActivity(this, MainActivity.class);
+        Navigation.redirectActivity(this, MainActivity.class);
     }
 
     /*public void ClickPost(View view){
         //Redirect activity to home
-        MainActivity.redirectActivity(this, Post.class);
+        Navigation.redirectActivity(this, Post.class);
     }*/
 
     public void ClickProfile(View view){
@@ -106,13 +106,13 @@ public class ProfilePage extends AppCompatActivity {
 
     public void ClickLogout(View view){
         //close app
-        MainActivity.logout(this);
+        Navigation.logout(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //close drawer
-        MainActivity.closeDrawer(drawerLayout);
+        Navigation.closeDrawer(drawerLayout);
     }
 }

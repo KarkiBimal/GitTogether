@@ -1,30 +1,21 @@
 package com.example.gittogether;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
-    //Initialize variable
+public class PostActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_post);
 
-        //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
     }
-
-
     /*
     ***************************************************************
     Drawer Menu
@@ -41,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        //Recreate activity
-        recreate();
+        //Redirect activity to Home
+        Navigation.redirectActivity(this, MainActivity.class);
     }
 
     public void ClickPost(View view){
-        //Redirect activity to home
-        Navigation.redirectActivity(this, PostActivity.class);
+        //Recreate activity
+        recreate();
     }
 
     public void ClickProfile(View view){
@@ -66,4 +57,5 @@ public class MainActivity extends AppCompatActivity {
         //close drawer
         Navigation.closeDrawer(drawerLayout);
     }
+
 }
