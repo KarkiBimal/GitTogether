@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         Navigation.redirectActivity(this, PostActivity.class);
     }
 
+    public void ClickMessage(View view){
+        //Redirect activity to Messages
+        Navigation.redirectActivity(this, MessageActivity.class);
+    }
+
     public void ClickProfile(View view){
         //Redirect activity to Profile
         Navigation.redirectActivity(this, ProfilePage.class);

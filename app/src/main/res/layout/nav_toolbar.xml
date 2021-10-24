@@ -22,12 +22,14 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="#636363"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:onClick="ClickHome"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_more"/>
+        android:onClick="ClickProfile"
+        android:src="@drawable/ic_settings"/>
 
 
 </LinearLayout>
