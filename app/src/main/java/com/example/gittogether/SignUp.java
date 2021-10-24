@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +24,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextFirstName,  editTextLastName,  editTextEmail,  editTextPassword, editTextHobby1, editTextHobby2
             , editTextHobby3, editTextAddress;
-    private Button registerUser, backLogin;
+    private Button registerUser;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +34,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
         registerUser=(Button)findViewById(R.id.bt_register);
         registerUser.setOnClickListener(this);
-
-        backLogin=(Button)findViewById(R.id.b_Login);
-        backLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class)); }
-            }
-        );
 
         editTextEmail=(EditText) findViewById(R.id.et_email);
         editTextEmail.setOnClickListener(this);
@@ -77,7 +68,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                 break;
         }
     }
-
     private void registerUser(){
 
         String email=editTextEmail.getText().toString().trim();
@@ -144,6 +134,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
+
+
+
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -161,14 +155,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                     else if(!task.isSuccessful()){
-                                        //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                         Toast.makeText(SignUp.this, "User Not Registered", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                 }
                             });
                         }else{
-                            startActivity(new Intent(getApplicationContext(),SignUp.class));
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                         }
                     }
                 });
