@@ -99,7 +99,7 @@ public class ProfilePage extends AppCompatActivity {
         MainActivity.redirectActivity(this, Post.class);
     }*/
 
-    public void ClickProfilePage(View view){
+    public void ClickProfile(View view){
         //recreate activity
         recreate();
     }
