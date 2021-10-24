@@ -12,7 +12,8 @@
         android:layout_height="120dp"
         android:layout_margin="16dp"
         android:onClick="ClickLogo"
-        android:src="@drawable/ic_mood"/>
+        android:src="@drawable/ic_mood"
+        android:contentDescription="Menu Logo" />
 
     <TextView
         android:layout_width="match_parent"
