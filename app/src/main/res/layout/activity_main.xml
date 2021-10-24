@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/main_toolbar"/>
+            layout="@layout/nav_toolbar"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:background="@color/white">
 
         <include
-            layout="@layout/main_nav_drawer"/>
+            layout="@layout/nav_drawer"/>
 
     </RelativeLayout>
 

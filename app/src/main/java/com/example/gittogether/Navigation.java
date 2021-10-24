@@ -10,11 +10,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 public class Navigation extends AppCompatActivity {
     //Initialize variable
-    TextView logOut;
     DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
     public void ClickMenu(View view){
@@ -29,7 +27,7 @@ public class Navigation extends AppCompatActivity {
 
     public void ClickLogo(View view){
         //Close drawer
-        redirectActivity(this, LoginActivity.class);
+        closeDrawer(drawerLayout);
     }
 
     public static void closeDrawer(DrawerLayout drawerLayout) {
@@ -47,15 +45,10 @@ public class Navigation extends AppCompatActivity {
         redirectActivity(this, MainActivity.class);
     }
 
-    public void ClickPost(View view){
-        //Redirect activity to post
-        redirectActivity(this, PostActivity.class);
-    }
-
-    public void ClickMessage(View view){
-        //Redirect activity to Messages
-        redirectActivity(this, MessageActivity.class);
-    }
+        public void ClickPost(View view){
+            //Redirect activity to post
+            redirectActivity(this, PostActivity.class);
+        }
 
     public void ClickProfile(View view){
         //Redirect activity to profile
