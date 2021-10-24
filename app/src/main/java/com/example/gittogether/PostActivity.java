@@ -42,6 +42,11 @@ public class PostActivity extends AppCompatActivity {
         recreate();
     }
 
+    public void ClickMessage(View view){
+        //Redirect activity to Messages
+        Navigation.redirectActivity(this, MessageActivity.class);
+    }
+
     public void ClickProfile(View view){
         //Redirect activity to Profile
         Navigation.redirectActivity(this, ProfilePage.class);
