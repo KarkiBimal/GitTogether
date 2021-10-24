@@ -81,7 +81,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),SignUp.class));
         }
 
         if(firstName.isEmpty()){
@@ -152,13 +152,17 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(SignUp.this, "User Registered", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
-                                    else{
+                                    else if(!task.isSuccessful()){
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                         Toast.makeText(SignUp.this, "User Not Registered", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                 }
                             });
+                        }else{
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                         }
                     }
                 });
