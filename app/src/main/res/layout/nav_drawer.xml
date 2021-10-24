@@ -84,6 +84,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="ClickMessage">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Messages"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_message"
+            android:layout_marginRight="48dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:onClick="ClickProfile">
 
         <TextView
@@ -110,7 +135,7 @@
         android:gravity="center_vertical"
         android:onClick="ClickLogout"
         android:orientation="horizontal"
-        android:layout_marginTop="280dp">
+        android:layout_marginTop="200dp">
 
         <TextView
             android:layout_width="0dp"

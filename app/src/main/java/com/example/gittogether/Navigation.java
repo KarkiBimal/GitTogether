@@ -45,10 +45,15 @@ public class Navigation extends AppCompatActivity {
         redirectActivity(this, MainActivity.class);
     }
 
-        public void ClickPost(View view){
-            //Redirect activity to post
-            redirectActivity(this, PostActivity.class);
-        }
+    public void ClickPost(View view){
+        //Redirect activity to post
+        redirectActivity(this, PostActivity.class);
+    }
+
+    public void ClickMessage(View view){
+        //Redirect activity to Messages
+        redirectActivity(this, MessageActivity.class);
+    }
 
     public void ClickProfile(View view){
         //Redirect activity to profile

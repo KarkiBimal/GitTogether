@@ -6,13 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.View;
 
-public class PostActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_message);
 
         drawerLayout = findViewById(R.id.drawer_layout);
     }
@@ -38,13 +38,12 @@ public class PostActivity extends AppCompatActivity {
     }
 
     public void ClickPost(View view){
+        //Redirect activity to Post
+        Navigation.redirectActivity(this, PostActivity.class);
+    }
+    public void ClickMessage(View view){
         //Recreate activity
         recreate();
-    }
-
-    public void ClickMessage(View view){
-        //Redirect activity to Messages
-        Navigation.redirectActivity(this, MessageActivity.class);
     }
 
     public void ClickProfile(View view){
