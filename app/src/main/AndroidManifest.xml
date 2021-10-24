@@ -9,8 +9,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GitTogether">
-        <activity android:name=".MainActivity"></activity>
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostActivity"
+            android:exported="false" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.actions"
@@ -18,7 +27,9 @@
 
         <activity android:name=".ProfilePage" />
         <activity android:name=".EmailResetActivity" />
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
