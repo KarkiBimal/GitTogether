@@ -16,6 +16,7 @@ public class PostActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
     }
+
     /*
     ***************************************************************
     Drawer Menu
