@@ -25,14 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 public class PostActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_post);
-//
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//    }
-
     private EditText editTextTitle, editTextMessage;
     private Button postToFeedbtn;
     private FirebaseUser currentUser;
@@ -43,7 +35,6 @@ public class PostActivity extends AppCompatActivity {
     private static final String POSTS="Post";
 
     Post post;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +75,6 @@ public class PostActivity extends AppCompatActivity {
     private void addPostToFirebase(String title, String message) {
         // below 3 lines of code is used to set
         // data in our object class.
-        post.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
         post.setTitle(title);
         post.setMessage(message);
 
