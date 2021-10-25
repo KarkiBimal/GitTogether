@@ -89,6 +89,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign In" />
+
+        <Button
+            android:id="@+id/b_Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

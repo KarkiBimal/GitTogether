@@ -24,7 +24,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextFirstName,  editTextLastName,  editTextEmail,  editTextPassword, editTextHobby1, editTextHobby2
             , editTextHobby3, editTextAddress;
-    private Button registerUser;
+    private Button registerUser, backLogin;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
         registerUser=(Button)findViewById(R.id.bt_register);
         registerUser.setOnClickListener(this);
+
+        backLogin=(Button)findViewById(R.id.b_Login);
+        backLogin.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View view) {
+                                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                         }
+                                     }
+        );;
 
         editTextEmail=(EditText) findViewById(R.id.et_email);
         editTextEmail.setOnClickListener(this);
@@ -66,8 +75,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             case R.id.bt_register:
                 registerUser();
                 break;
+
+
         }
     }
+
+
+
+
     private void registerUser(){
 
         String email=editTextEmail.getText().toString().trim();
