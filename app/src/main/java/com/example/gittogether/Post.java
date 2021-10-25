@@ -2,7 +2,7 @@ package com.example.gittogether;
 
 public class Post {
 
-    public String userID, title, message;
+    private String userID, title, message;
 
     public Post() {
     }
@@ -12,4 +12,29 @@ public class Post {
         this.title = title;
         this.message = message;
     }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }
