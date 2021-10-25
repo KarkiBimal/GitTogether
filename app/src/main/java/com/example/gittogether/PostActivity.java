@@ -23,14 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class PostActivity extends AppCompatActivity {
-    DrawerLayout drawerLayout;
-
     private EditText editTextTitle, editTextMessage;
     private Button postToFeedbtn;
-    private FirebaseUser currentUser;
-    private DatabaseReference userRef;
     private DatabaseReference databaseReference;
-    private FirebaseDatabase database;
+    DrawerLayout drawerLayout;
 
     private static final String POSTS="Post";
 
@@ -41,6 +37,7 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        drawerLayout = findViewById(R.id.drawer_layout);
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         editTextTitle = (EditText) findViewById(R.id.edit_post_title);
