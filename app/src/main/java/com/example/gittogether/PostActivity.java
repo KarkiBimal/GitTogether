@@ -112,47 +112,6 @@ public class PostActivity extends AppCompatActivity {
         });
     }
 
-//    private void postToFeed(){
-//        String title=editTextTitle.getText().toString().trim();
-//        String message=editTextMessage.getText().toString().trim();
-//
-//        if(FirebaseAuth.getInstance().getCurrentUser() != null){
-//            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//        }
-//
-//        database = FirebaseDatabase.getInstance();
-//        userRef = database.getReference(POSTS);
-//
-//        userRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//                Post post = new Post(currentUser.getUid(), title, message);
-//
-//                FirebaseDatabase.getInstance().getReference(POSTS)
-//                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                        .setValue(post).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(PostActivity.this, "Posted Successfully", Toast.LENGTH_SHORT).show();
-//                            startActivity(new Intent(getApplicationContext(),ProfilePage.class));
-//                        }
-//                        else{
-//                            Toast.makeText(PostActivity.this, "Post Unsuccessful", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//
-//        });
-//    }
-
     /*
     ***************************************************************
     Drawer Menu
