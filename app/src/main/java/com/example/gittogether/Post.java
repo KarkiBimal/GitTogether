@@ -2,23 +2,14 @@ package com.example.gittogether;
 
 public class Post {
 
-    private String userID, title, message;
+    private String title, message;
 
     public Post() {
     }
 
-    public Post(String userID, String title, String message){
-        this.userID = userID;
+    public Post(String title, String message){
         this.title = title;
         this.message = message;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
     public String getTitle() {
