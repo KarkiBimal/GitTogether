@@ -42,7 +42,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                              startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                          }
                                      }
-        );;
+        );
 
         editTextEmail=(EditText) findViewById(R.id.et_email);
         editTextEmail.setOnClickListener(this);
@@ -177,7 +177,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                 }
                             });
                         }else{
-                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                            startActivity(new Intent(getApplicationContext(),SignUp.class));
                         }
                     }
                 });
