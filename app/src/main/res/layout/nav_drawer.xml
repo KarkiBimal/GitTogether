@@ -136,18 +136,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:onClick="ClickLogout"
+
         android:orientation="horizontal"
         android:layout_marginTop="250dp">
 
         <TextView
+            android:id="@+id/logOut"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_weight="1"
             android:padding="12dp"
-            android:text="Logout" />
+            android:text="Logout"
+            android:onClick="ClickLogout"/>
 
         <ImageView
             android:layout_width="wrap_content"
