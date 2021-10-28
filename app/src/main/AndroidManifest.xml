@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".UserProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".MessageActivity"
             android:exported="false" />
         <activity

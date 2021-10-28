@@ -16,7 +16,33 @@ public class User {
         this.hobby3=hobby3;
         this.address=address;
 
+    }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getHobby1() {
+        return hobby1;
+    }
+
+    public String getHobby2() {
+        return hobby2;
+    }
+
+    public String getHobby3() {
+        return hobby3;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
