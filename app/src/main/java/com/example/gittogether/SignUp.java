@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -37,11 +38,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
         backLogin=(Button)findViewById(R.id.b_Login);
         backLogin.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
-                                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                                         }
-                                     }
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class)); }
+            }
         );
 
         editTextEmail=(EditText) findViewById(R.id.et_email);
@@ -75,13 +75,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             case R.id.bt_register:
                 registerUser();
                 break;
-
-
         }
     }
-
-
-
 
     private void registerUser(){
 
@@ -149,10 +144,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
-
-
-
-
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -170,7 +161,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                     else if(!task.isSuccessful()){
-                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                         Toast.makeText(SignUp.this, "User Not Registered", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
