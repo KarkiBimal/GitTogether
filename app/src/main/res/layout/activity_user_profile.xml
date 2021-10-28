@@ -20,10 +20,11 @@
             android:background="#FFFFFF"
             tools:context=".ProfilePage">
 
+
             <RelativeLayout
                 android:id="@+id/rellay1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
 
                 android:paddingBottom="20dp">
 
@@ -64,20 +65,35 @@
                     android:textColor="#070707"
                     android:textSize="32sp" />
 
+                <TextView
+                    android:id="@+id/lastName_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgUser"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp"
+                    android:background="@color/white"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:text="Last Name"
+                    android:textColor="#070707"
+                    android:textSize="32sp" />
+
+
 
             </RelativeLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="250dp"
                     android:background="#FFFFFF"
                     android:gravity="center"
                     android:text="Email"
@@ -142,25 +158,19 @@
                     android:id="@+id/extraSpace"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
-                    android:gravity="center"
                     android:layout_marginBottom="50dp"
+                    android:gravity="center"
                     android:text="" />
 
             </LinearLayout>
+
+
 
         </RelativeLayout>
 
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <include
-            layout="@layout/nav_toolbar"/>
-
-    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="300dp"
