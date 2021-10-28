@@ -27,7 +27,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
-        lastname=(TextView) findViewById(R.id.lastName);
         address=(TextView) findViewById(R.id.address_1);
         hobby1=(TextView) findViewById(R.id.hobby1);
         hobby2=(TextView) findViewById(R.id.hobby2);
@@ -37,7 +36,6 @@ public class UserProfileActivity extends AppCompatActivity {
         if(extras != null){
             userEmail.setText(extras.getString("email"));
             name.setText(extras.getString("firstName"));
-            lastname.setText(extras.getString("lastName"));
             address.setText(extras.getString("city"));
             hobby1.setText(extras.getString("hobby1"));
             hobby2.setText(extras.getString("hobby2"));
