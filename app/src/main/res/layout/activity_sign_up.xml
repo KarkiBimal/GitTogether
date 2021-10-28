@@ -76,7 +76,7 @@
             android:id="@+id/et_address"
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:hint="Address" />
+            android:hint="City" />
 
         <EditText
             android:id="@+id/et_password"
@@ -89,7 +89,7 @@
             android:id="@+id/bt_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign In" />
+            android:text="Sign Up" />
 
         <Button
             android:id="@+id/b_Login"
