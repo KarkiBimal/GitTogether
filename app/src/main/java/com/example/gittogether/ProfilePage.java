@@ -42,6 +42,7 @@ public class ProfilePage extends AppCompatActivity {
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
+        lastname=(TextView) findViewById(R.id.lastName);
         address=(TextView) findViewById(R.id.address_1);
         hobby1=(TextView) findViewById(R.id.hobby1);
         hobby2=(TextView) findViewById(R.id.hobby2);
@@ -62,6 +63,7 @@ public class ProfilePage extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 name.setText(dataSnapshot.child(uId).child("firstName").getValue(String.class));
+                lastname.setText(dataSnapshot.child(uId).child("lastName").getValue(String.class));
                 userEmail.setText(dataSnapshot.child(uId).child("email").getValue(String.class));
                 address.setText(dataSnapshot.child(uId).child("address").getValue(String.class));
                 hobby1.setText(dataSnapshot.child(uId).child("hobby1").getValue(String.class));
