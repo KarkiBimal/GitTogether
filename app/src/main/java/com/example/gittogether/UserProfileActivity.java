@@ -37,7 +37,7 @@ public class UserProfileActivity extends AppCompatActivity {
         if(extras != null){
             userEmail.setText(extras.getString("email"));
             name.setText(extras.getString("firstName"));
-            lastname.setText(extras.getString("lastName_1"));
+            lastname.setText(extras.getString("lastName"));
             address.setText(extras.getString("city"));
             hobby1.setText(extras.getString("hobby1"));
             hobby2.setText(extras.getString("hobby2"));

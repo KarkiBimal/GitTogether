@@ -82,8 +82,7 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="63dp"
-            android:hint="Password"
-            android:inputType="textPassword|numberPassword" />
+            android:hint="Password" />
 
         <Button
             android:id="@+id/bt_register"
