@@ -14,9 +14,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -67,16 +69,27 @@ public class MessageActivity extends AppCompatActivity {
             this.messageTime = messageTime;
         }
         private void displayChatMessages() {
-            ListView listOfMessages = (ListView)findViewById(id.list_of_messages);
+            ListView listOfMessages = (ListView)findViewById(R.id.list_of_messages);
 
-            adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
-                    activity_message,FirebaseDatabase.getInstance().getReference() ) {
+            Query query = FirebaseDatabase.getInstance().getReference();
+            FirebaseListOptions<ChatMessage> options = new FirebaseListOptions.Builder<ChatMessage>()
+                    .setQuery(query, ChatMessage.class)
+                    .build();
+            adapter = new FirebaseListAdapter<ChatMessage>(options) {
                 @Override
                 protected void populateView(View v, ChatMessage model, int position) {
+
+            //    }
+            //};
+
+            //adapter = new FirebaseListAdapter<ChatMessage>(FirebaseDatabase.getInstance().getReference(),
+            //        ChatMessage.class, R.layout.activity_message, this) {
+            //    @Override
+            //    protected void populateView(View v, ChatMessage model, int position) {
                     // Get references to the views of message.xml
-                    TextView messageText = (TextView)v.findViewById(id.message_text);
-                    TextView messageUser = (TextView)v.findViewById(id.message_user);
-                    TextView messageTime = (TextView)v.findViewById(id.message_time);
+                    TextView messageText = (TextView)v.findViewById(R.id.message_text);
+                    TextView messageUser = (TextView)v.findViewById(R.id.message_user);
+                    TextView messageTime = (TextView)v.findViewById(R.id.message_time);
 
                     // Set their text
                     messageText.setText(model.getMessageText());
@@ -100,16 +113,16 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_message);
+        setContentView(R.layout.activity_message);
 
 
         FloatingActionButton fab =
-                (FloatingActionButton)findViewById(id.fab);
+                (FloatingActionButton)findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText input = (EditText)findViewById(id.input);
+                EditText input = (EditText)findViewById(R.id.input);
 
                 // Read the input field and push a new instance
                 // of ChatMessage to the Firebase database
@@ -127,7 +140,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        drawerLayout = findViewById(id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
     }
 
     /*
