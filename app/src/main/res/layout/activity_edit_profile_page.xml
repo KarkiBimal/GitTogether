@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".EditProfilePageActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="30dp"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name"
+        android:id="@+id/et_first_name_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:id="@+id/et_last_name_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:id="@+id/et_email_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:id="@+id/et_address_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hobby 1"
+        android:id="@+id/et_hobby_1_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hobby 2"
+        android:id="@+id/et_hobby_2_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hobby 3"
+        android:id="@+id/et_hobby_3_up"
+        android:layout_margin="4dp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Upload Profile Picture"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_blue_bright"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_pic"/>
+
+    <Button
+        android:id="@+id/btn_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_bright"
+        android:onClick="update"
+        android:text="Save Profile"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    
+</LinearLayout>

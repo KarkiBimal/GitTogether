@@ -2,6 +2,7 @@
 
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -9,8 +10,6 @@
     tools:context=".ProfilePage">
 
     <ScrollView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
@@ -67,9 +66,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="215dp"
-                android:layout_marginBottom="400dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="267dp"
+                android:layout_marginBottom="450dp"
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -78,24 +77,7 @@
                     android:id="@+id/updatePicButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Update Picture" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="270dp"
-                android:layout_marginBottom="400dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Upload Picture" />
+                    android:text="Edit Profile" />
             </LinearLayout>
 
             <LinearLayout
