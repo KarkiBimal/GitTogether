@@ -11,14 +11,11 @@
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/item.xml" value="0.2" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/user_list_item.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/xml/actions.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile_page.xml" value="0.2" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_main.xml" value="0.23550724637681159" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_message.xml" value="0.10520833333333333" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.264" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_drawer.xml" value="0.2296875" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_toolbar.xml" value="0.2296875" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/drawable/circle_border.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_main.xml" value="0.10416666666666667" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.1484375" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_sign_up.xml" value="0.1484375" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.1484375" />
       </map>
     </option>
   </component>
