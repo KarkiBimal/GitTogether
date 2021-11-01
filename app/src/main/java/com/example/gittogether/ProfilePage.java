@@ -32,16 +32,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-//import com.squareup.picasso.Picasso;
 
 import static android.content.ContentValues.TAG;
 
 public class ProfilePage extends AppCompatActivity {
-    private Button updatePic;
+    private Button editProfile;
     private TextView changePic, uploadPic;
-    private DatabaseReference userRef;
     private StorageReference storageReference;
     private StorageReference photoReference;
+    private DatabaseReference userRef;
     private FirebaseDatabase database;
     private ImageView profilePicture;
     DrawerLayout drawerLayout;
@@ -52,7 +51,6 @@ public class ProfilePage extends AppCompatActivity {
     String email;
     FirebaseUser cUser;
     String uId;
-    Bitmap bmImg;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,13 +70,9 @@ public class ProfilePage extends AppCompatActivity {
         database= FirebaseDatabase.getInstance();
         userRef=database.getReference(USERS);
         profilePicture = findViewById(R.id.profile_pic);
-        updatePic = (Button) findViewById(R.id.updatePicButton);
+        editProfile = (Button) findViewById(R.id.updatePicButton);
         storageReference = FirebaseStorage.getInstance().getReference();
         photoReference= storageReference.child("users/" + uId + "/profile.jpg");
-
-//        profileImage = findViewById(R.id.profile_pic);
-//        changePic = (TextView) findViewById(R.id.change_pic);
-//        uploadPic = (TextView) findViewById(R.id.upload_pic);
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
@@ -117,58 +111,13 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
-        updatePic.setOnClickListener(new View.OnClickListener() {
+        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //open Gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent, 1000);
+                Navigation.redirectActivity(ProfilePage.this, EditProfilePageActivity.class);
             }
         });
 
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            if(resultCode == Activity.RESULT_OK){
-                Uri imageUri = data.getData();
-                //profilePicture.setImageURI(imageUri);
-
-                uploadImageToFirebase(imageUri);
-            }
-        }
-    }
-
-    private void uploadImageToFirebase(Uri imageUri) {
-        //upload image to Firebase Storage
-        final StorageReference fileRef = storageReference.child("users/" + uId +"/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                final long ONE_MEGABYTE = 1024 * 1024;
-                photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                        profilePicture.setImageBitmap(bmp);
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
-                    }
-                });
-                Toast.makeText(ProfilePage.this, "Image Uploaded.", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProfilePage.this, "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void ClickMenu(View view){
