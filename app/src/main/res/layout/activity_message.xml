@@ -25,7 +25,8 @@
         android:tint="@android:color/white"
         app:fabSize="mini" />
 
-    <android.support.design.widget.TextInputLayout
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/fab"
@@ -39,17 +40,18 @@
             android:hint="Input"
             android:id="@+id/input"
             />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ListView
+        android:id="@+id/list_of_messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_above="@id/fab"
-        android:dividerHeight="16dp"
-        android:divider="@android:color/transparent"
-        android:id="@+id/list_of_messages"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginBottom="16dp"
-        android:layout_alignParentLeft="true" />
+        android:divider="@android:color/transparent"
+        android:dividerHeight="16dp" />
 </RelativeLayout>
+
