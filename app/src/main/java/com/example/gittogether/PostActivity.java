@@ -93,18 +93,20 @@ public class PostActivity extends AppCompatActivity {
         String title = editTextTitle.getText().toString();
         String message = editTextMessage.getText().toString();
 
-        // below line is for checking weather the
-        // edittext fields are empty or not.
-        if (TextUtils.isEmpty(title) || TextUtils.isEmpty(message)) {
-            // if the text fields are empty
-            // then show the below message.
-            Toast.makeText(PostActivity.this, "Please add some data.", Toast.LENGTH_SHORT).show();
-        } else {
-            // else call the method to add
-            // data to our database.
-            addPostToFirebase(title, message);
-            Navigation.redirectActivity(PostActivity.this, MainActivity.class);
+        if(title.isEmpty()){
+            editTextTitle.setError("Please enter a title.");
+            editTextTitle.requestFocus();
+            return;
         }
+
+        if(message.isEmpty()){
+            editTextMessage.setError("Please enter a message.");
+            editTextMessage.requestFocus();
+            return;
+        }
+
+        addPostToFirebase(title, message);
+        Navigation.redirectActivity(PostActivity.this, MainActivity.class);
     }
 
     private void uploadImageToFirebase(Uri imageUri) {

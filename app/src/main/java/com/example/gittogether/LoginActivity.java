@@ -81,7 +81,10 @@ public class LoginActivity extends AppCompatActivity {
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
-                                if (task.isSuccessful()) {
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "Invalid email and password combination.", Toast.LENGTH_SHORT).show();
+
+                                } else {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(LoginActivity.this, "Logged in Sucessfully", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
