@@ -1,0 +1,195 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 9e4122496b38a27a5ba835b0b1576c65ae52a86d)
++++ b/.idea/misc.xml	(revision 58e0f633882c24162e039dc1d9d2740a7388fd07)
+@@ -11,11 +11,15 @@
+         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/item.xml" value="0.2" />
+         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/user_list_item.xml" value="0.17916666666666667" />
+         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/xml/actions.xml" value="0.13020833333333334" />
+-        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/drawable/circle_border.xml" value="0.16458333333333333" />
+-        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_main.xml" value="0.10416666666666667" />
+-        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.1484375" />
+-        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_sign_up.xml" value="0.1484375" />
+-        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.1484375" />
++        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
++        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile_page.xml" value="0.2" />
++        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.264" />
++        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
++        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_drawer.xml" value="0.2296875" />
++        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_toolbar.xml" value="0.2296875" />
++        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
++        <entry key="app/src/main/res/layout/activity_message.xml" value="0.246875" />
++        <entry key="app/src/main/res/layout/messages.xml" value="0.246875" />
+       </map>
+     </option>
+   </component>
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 9e4122496b38a27a5ba835b0b1576c65ae52a86d)
++++ b/app/build.gradle	(revision 58e0f633882c24162e039dc1d9d2740a7388fd07)
+@@ -39,19 +39,21 @@
+     implementation 'com.google.android.gms:play-services-location:18.0.0'
+     implementation 'com.google.android.material:material:1.4.0'
+     implementation 'androidx.annotation:annotation:1.2.0'
+-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
++    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
++    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
++    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+     implementation 'com.google.firebase:firebase-auth:21.0.1'
+     implementation 'com.google.firebase:firebase-database:20.0.2'
+-    implementation 'com.google.firebase:firebase-storage:19.1.0'
+-    implementation 'com.google.android.material:material:1.2.1'
++    implementation 'com.google.firebase:firebase-storage:20.0.0'
++    implementation 'com.google.android.material:material:1.5.0-alpha05'
+     implementation 'androidx.recyclerview:recyclerview:1.3.0-alpha01'
+-    testImplementation 'junit:junit:4.+'
++    implementation 'com.google.firebase:firebase-common-ktx:20.0.0'
++    implementation 'com.firebaseui:firebase-ui-database:8.0.0'
++    testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+ 
+     implementation 'com.android.support:multidex:1.0.3'
+-    implementation 'com.firebaseui:firebase-ui:0.6.0'
++    implementation 'com.firebaseui:firebase-ui:8.0.0'
+ 
+ }
+Index: app/src/main/java/com/example/gittogether/MessageActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/gittogether/MessageActivity.java b/app/src/main/java/com/example/gittogether/MessageActivity.java
+--- a/app/src/main/java/com/example/gittogether/MessageActivity.java	(revision 9e4122496b38a27a5ba835b0b1576c65ae52a86d)
++++ b/app/src/main/java/com/example/gittogether/MessageActivity.java	(revision 58e0f633882c24162e039dc1d9d2740a7388fd07)
+@@ -14,9 +14,11 @@
+ import android.widget.TextView;
+ 
+ import com.firebase.ui.database.FirebaseListAdapter;
++import com.firebase.ui.database.FirebaseListOptions;
+ import com.google.android.material.floatingactionbutton.FloatingActionButton;
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.database.FirebaseDatabase;
++import com.google.firebase.database.Query;
+ 
+ import java.text.DateFormat;
+ import java.util.Date;
+@@ -67,16 +69,27 @@
+             this.messageTime = messageTime;
+         }
+         private void displayChatMessages() {
+-            ListView listOfMessages = (ListView)findViewById(id.list_of_messages);
++            ListView listOfMessages = (ListView)findViewById(R.id.list_of_messages);
+ 
+-            adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
+-                    activity_message,FirebaseDatabase.getInstance().getReference() ) {
++            Query query = FirebaseDatabase.getInstance().getReference();
++            FirebaseListOptions<ChatMessage> options = new FirebaseListOptions.Builder<ChatMessage>()
++                    .setQuery(query, ChatMessage.class)
++                    .build();
++            adapter = new FirebaseListAdapter<ChatMessage>(options) {
+                 @Override
+                 protected void populateView(View v, ChatMessage model, int position) {
++
++            //    }
++            //};
++
++            //adapter = new FirebaseListAdapter<ChatMessage>(FirebaseDatabase.getInstance().getReference(),
++            //        ChatMessage.class, R.layout.activity_message, this) {
++            //    @Override
++            //    protected void populateView(View v, ChatMessage model, int position) {
+                     // Get references to the views of message.xml
+-                    TextView messageText = (TextView)v.findViewById(id.message_text);
+-                    TextView messageUser = (TextView)v.findViewById(id.message_user);
+-                    TextView messageTime = (TextView)v.findViewById(id.message_time);
++                    TextView messageText = (TextView)v.findViewById(R.id.message_text);
++                    TextView messageUser = (TextView)v.findViewById(R.id.message_user);
++                    TextView messageTime = (TextView)v.findViewById(R.id.message_time);
+ 
+                     // Set their text
+                     messageText.setText(model.getMessageText());
+@@ -100,16 +113,16 @@
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        setContentView(activity_message);
++        setContentView(R.layout.activity_message);
+ 
+ 
+         FloatingActionButton fab =
+-                (FloatingActionButton)findViewById(id.fab);
++                (FloatingActionButton)findViewById(R.id.fab);
+ 
+         fab.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+-                EditText input = (EditText)findViewById(id.input);
++                EditText input = (EditText)findViewById(R.id.input);
+ 
+                 // Read the input field and push a new instance
+                 // of ChatMessage to the Firebase database
+@@ -127,7 +140,7 @@
+             }
+         });
+ 
+-        drawerLayout = findViewById(id.drawer_layout);
++        drawerLayout = findViewById(R.id.drawer_layout);
+     }
+ 
+     /*
+Index: app/src/main/res/layout/activity_message.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_message.xml b/app/src/main/res/layout/activity_message.xml
+--- a/app/src/main/res/layout/activity_message.xml	(revision 9e4122496b38a27a5ba835b0b1576c65ae52a86d)
++++ b/app/src/main/res/layout/activity_message.xml	(revision 58e0f633882c24162e039dc1d9d2740a7388fd07)
+@@ -25,7 +25,8 @@
+         android:tint="@android:color/white"
+         app:fabSize="mini" />
+ 
+-    <android.support.design.widget.TextInputLayout
++
++    <com.google.android.material.textfield.TextInputLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_toLeftOf="@id/fab"
+@@ -39,17 +40,18 @@
+             android:hint="Input"
+             android:id="@+id/input"
+             />
+-    </android.support.design.widget.TextInputLayout>
++    </com.google.android.material.textfield.TextInputLayout>
+ 
+     <ListView
++        android:id="@+id/list_of_messages"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-        android:layout_alignParentTop="true"
+-        android:layout_alignParentStart="true"
+         android:layout_above="@id/fab"
+-        android:dividerHeight="16dp"
+-        android:divider="@android:color/transparent"
+-        android:id="@+id/list_of_messages"
++        android:layout_alignParentStart="true"
++        android:layout_alignParentLeft="true"
++        android:layout_alignParentTop="true"
+         android:layout_marginBottom="16dp"
+-        android:layout_alignParentLeft="true" />
+-</RelativeLayout>
+\ No newline at end of file
++        android:divider="@android:color/transparent"
++        android:dividerHeight="16dp" />
++</RelativeLayout>
++

@@ -41,7 +41,7 @@ public class MessageActivity extends AppCompatActivity {
         ImageView sendButton;
         EditText messageArea;
         ScrollView scrollView;
-
+        DrawerLayout drawerLayout;
 
 
         @Override
@@ -53,13 +53,12 @@ public class MessageActivity extends AppCompatActivity {
             sendButton = (ImageView)findViewById(R.id.sendButton);
             messageArea = (EditText)findViewById(R.id.messageArea);
             scrollView = (ScrollView)findViewById(R.id.scrollView);
+            Firebase reference1;
+            Firebase reference2;
 
             Firebase.setAndroidContext(this);
-            reference1= new Firebase(User.class.getName() + " " /* + User.class.chatWith */);
-            referenc2 = new Firebase(/*User.class.chatWith + */ " " + User.class.getName());
-
-            DrawerLayout drawerLayout;
-
+            reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /*+*/  "_" /*+*/);
+            reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /*+*/  "_" /*+*/);
 
 
             sendButton.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,7 @@ public class MessageActivity extends AppCompatActivity {
                     String userName = map.get("user").toString();
 
                     if(userName.equals(User.class.getName())){
-                        addMessageBox("You:-\n" + message, 1);
+                        addMessageBox("You:\n" + message, 1);
                     }
                     else{
                         addMessageBox(/*User.class.chatWith + */ ":-\n" + message, 2);
@@ -118,7 +117,8 @@ public class MessageActivity extends AppCompatActivity {
         public void addMessageBox(String message, int type){
             TextView textView = new TextView(MessageActivity.this);
             textView.setText(message);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
+                    (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             lp.setMargins(0, 0, 0, 10);
             textView.setLayoutParams(lp);
 
@@ -132,7 +132,7 @@ public class MessageActivity extends AppCompatActivity {
             layout.addView(textView);
             scrollView.fullScroll(View.FOCUS_DOWN);
         }
-    }
+
 
     /*
     ***************************************************************
