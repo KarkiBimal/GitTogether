@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -82,7 +83,10 @@ public class LoginActivity extends AppCompatActivity {
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Invalid email and password combination.", Toast.LENGTH_SHORT).show();
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            "Invalid email and password combination.", Toast.LENGTH_SHORT);
+                                    toast.setGravity(Gravity.TOP, 0, 0);
+                                    toast.show();
 
                                 } else {
                                     if (task.isSuccessful()) {
