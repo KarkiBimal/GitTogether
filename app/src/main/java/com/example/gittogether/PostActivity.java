@@ -64,6 +64,7 @@ public class PostActivity extends AppCompatActivity {
                     // else call the method to add
                     // data to our database.
                     addPostToFirebase(title, message);
+                    Navigation.redirectActivity(PostActivity.this, MainActivity.class);
                 }
             }
         });

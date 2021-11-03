@@ -19,4 +19,5 @@
     <string name="message">Message</string>
     <string name="post">Post</string>
     <string name="post_header">Post to Feed</string>
+    <string name="upload_image">Upload Image</string>
 </resources>
