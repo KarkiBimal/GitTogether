@@ -13,16 +13,18 @@
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/xml/actions.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile_page.xml" value="0.2" />
+        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_main.xml" value="0.23550724637681159" />
+        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_message.xml" value="0.10520833333333333" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.264" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_drawer.xml" value="0.2296875" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_toolbar.xml" value="0.2296875" />
-        <entry key="app/src/main/res/drawable/ic_send.xml" value="0.2630208333333333" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
-        <entry key="app/src/main/res/layout/activity_message.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/messages.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/nav_drawer.xml" value="0.16259057971014493" />
+        <entry key="app/src/main/res/drawable/rounded_corner1.xml" value="0.2609375" />
+        <entry key="app/src/main/res/drawable/rounded_corner2.xml" value="0.2609375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
+        <entry key="app/src/main/res/layout/activity_message.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/messages.xml" value="0.1" />
       </map>
     </option>
   </component>
