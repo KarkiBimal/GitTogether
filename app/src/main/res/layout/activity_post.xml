@@ -122,6 +122,7 @@
         android:width="253dp"
         android:height="77dp"
         android:background="@color/colorPrimary"
+        android:onClick="post"
         android:text="@string/post"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
