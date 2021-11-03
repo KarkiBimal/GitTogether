@@ -1,15 +1,15 @@
 package com.example.gittogether;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        database.child(uId).child("userID").setValue(uId);
+
         list = new ArrayList<>();
         onItemListener = new MainAdapter.OnItemListener() {
             @Override
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("hobby1", list.get(position).getHobby1());
                 intent.putExtra("hobby2", list.get(position).getHobby2());
                 intent.putExtra("hobby3", list.get(position).getHobby3());
+                intent.putExtra("userID",list.get(position).getuserID());
                 startActivity(intent);
             }
         };
