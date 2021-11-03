@@ -95,51 +95,51 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         }
 
         if(firstName.isEmpty()){
-            editTextFirstName.setError("You Idiot....");
+            editTextFirstName.setError("Please enter your First name.");
             editTextFirstName.requestFocus();
             return;
         }
         if(lastName.isEmpty()){
-            editTextLastName.setError("You Idiot....");
+            editTextLastName.setError("Please enter your Last name.");
             editTextLastName.requestFocus();
             return;
         }
         if(email.isEmpty()){
-            editTextEmail.setError("You Idiot....");
+            editTextEmail.setError("Please enter your Email.");
             editTextEmail.requestFocus();
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editTextEmail.setError("You are Super Idiot....");
+            editTextEmail.setError("Your email does not match.");
             editTextEmail.requestFocus();
             return;
         }
         if(password.isEmpty()){
-            editTextPassword.setError("You Idiot....");
+            editTextPassword.setError("Please enter a Password.");
             editTextPassword.requestFocus();
             return;
         }
 
         if(hobby1.isEmpty()){
-            editTextHobby1.setError("You Idiot....");
+            editTextHobby1.setError("Please enter a Hobby.");
             editTextHobby1.requestFocus();
             return;
         }
 
         if(hobby2.isEmpty()){
-            editTextHobby2.setError("You Idiot....");
+            editTextHobby2.setError("Please enter a Hobby.");
             editTextHobby2.requestFocus();
             return;
         }
 
         if(hobby3.isEmpty()){
-            editTextHobby3.setError("You Idiot....");
+            editTextHobby3.setError("Please enter a Hobby.");
             editTextHobby3.requestFocus();
             return;
         }
 
         if(address.isEmpty()){
-            editTextAddress.setError("You Idiot....");
+            editTextAddress.setError("Please enter your City.");
             editTextAddress.requestFocus();
             return;
         }

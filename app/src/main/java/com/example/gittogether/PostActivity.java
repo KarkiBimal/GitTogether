@@ -56,7 +56,7 @@ public class PostActivity extends AppCompatActivity {
 
                 // below line is for checking weather the
                 // edittext fields are empty or not.
-                if (TextUtils.isEmpty(title) && TextUtils.isEmpty(message)) {
+                if (TextUtils.isEmpty(title) || TextUtils.isEmpty(message)) {
                     // if the text fields are empty
                     // then show the below message.
                     Toast.makeText(PostActivity.this, "Please add some data.", Toast.LENGTH_SHORT).show();
