@@ -57,8 +57,8 @@ public class MessageActivity extends AppCompatActivity {
             Firebase reference2;
 
             Firebase.setAndroidContext(this);
-            reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /**/ + "_" + /**/);
-            reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /**/ + "_" + /**/);
+            reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /*+*/  "_" /*+*/);
+            reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /*+*/  "_" /*+*/);
 
 
             sendButton.setOnClickListener(new View.OnClickListener() {
