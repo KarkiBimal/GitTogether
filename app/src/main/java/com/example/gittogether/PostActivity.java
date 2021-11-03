@@ -115,7 +115,7 @@ public class PostActivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(PostActivity.this, "Image Uploaded.", Toast.LENGTH_SHORT).show();
                 //Go back to profile page when uploading finished
-                Navigation.redirectActivity(PostActivity.this, ProfilePage.class);
+//                Navigation.redirectActivity(PostActivity.this, ProfilePage.class);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
