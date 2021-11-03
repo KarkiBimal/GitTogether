@@ -2,7 +2,7 @@ package com.example.gittogether;
 
 public class User {
 
-    public String firstName, lastName, email, hobby1, hobby2, hobby3, address;
+    public String firstName, lastName, email, hobby1, hobby2, hobby3, address, userID;
 
     public User() {
     }
@@ -44,5 +44,9 @@ public class User {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getuserID() {
+        return userID;
     }
 }

@@ -70,14 +70,14 @@
 
     <EditText
         android:id="@+id/edit_post_message"
-        android:layout_width="308dp"
-        android:layout_height="273dp"
+        android:layout_width="311dp"
+        android:layout_height="244dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="203dp"
+        android:layout_marginBottom="231dp"
         android:width="309dp"
         android:background="@drawable/my_border"
         android:ems="10"
@@ -94,24 +94,41 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_post_title" />
 
     <Button
-        android:id="@+id/button_post"
-        android:layout_width="253dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginLeft="79dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="77dp"
-        android:width="250dp"
-        android:text="@string/post"
-        app:cornerRadius="30dp"
+        android:id="@+id/upload_image_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginLeft="142dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginRight="143dp"
+        android:layout_marginBottom="157dp"
+        android:text="@string/upload_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_message"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_post_message" />
+
+    <Button
+        android:id="@+id/button_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="78dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginRight="78dp"
+        android:layout_marginBottom="55dp"
+        android:width="253dp"
+        android:height="77dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/post"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_image_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout

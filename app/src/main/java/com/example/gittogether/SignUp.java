@@ -38,10 +38,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
         backLogin=(Button)findViewById(R.id.b_Login);
         backLogin.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
-                                             startActivity(new Intent(getApplicationContext(), LoginActivity.class)); }
-                                     }
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class)); }
+            }
         );
 
         editTextEmail=(EditText) findViewById(R.id.et_email);
@@ -89,10 +89,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         String address=editTextAddress.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
 
-
-        if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),SignUp.class));
-        }
+//
+//        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(),SignUp.class));
+//        }
 
         if(firstName.isEmpty()){
             editTextFirstName.setError("Please enter your First name.");
@@ -110,13 +110,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editTextEmail.setError("Your email does not match.");
+            editTextEmail.setError("Must enter a valid Email.");
             editTextEmail.requestFocus();
-            return;
-        }
-        if(password.isEmpty()){
-            editTextPassword.setError("Please enter a Password.");
-            editTextPassword.requestFocus();
             return;
         }
 
@@ -144,6 +139,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
+        if(password.length() < 8){
+            editTextPassword.setError("Password must be 8 characters long.");
+            editTextPassword.requestFocus();
+            return;
+        }
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -161,13 +162,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                     else if(!task.isSuccessful()){
-                                        //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                         Toast.makeText(SignUp.this, "User Not Registered", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                 }
                             });
-                        }else{
+                        }
+                        else{
                             startActivity(new Intent(getApplicationContext(),SignUp.class));
                         }
                     }
