@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
                     android:gravity="center"
-                    android:text="Address"
+                    android:text="City"
                     android:textColor="#0B0808"
                     android:textSize="24sp" />
 

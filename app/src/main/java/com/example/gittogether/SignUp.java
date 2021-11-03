@@ -110,13 +110,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editTextEmail.setError("Your email does not match.");
+            editTextEmail.setError("Must enter a valid Email.");
             editTextEmail.requestFocus();
-            return;
-        }
-        if(password.isEmpty()){
-            editTextPassword.setError("Please enter a Password.");
-            editTextPassword.requestFocus();
             return;
         }
 
@@ -141,6 +136,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         if(address.isEmpty()){
             editTextAddress.setError("Please enter your City.");
             editTextAddress.requestFocus();
+            return;
+        }
+
+        if(password.length() < 8){
+            editTextPassword.setError("Password must be 8 characters long.");
+            editTextPassword.requestFocus();
             return;
         }
 
