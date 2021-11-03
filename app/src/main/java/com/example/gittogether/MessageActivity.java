@@ -53,13 +53,12 @@ public class MessageActivity extends AppCompatActivity {
             sendButton = (ImageView)findViewById(R.id.sendButton);
             messageArea = (EditText)findViewById(R.id.messageArea);
             scrollView = (ScrollView)findViewById(R.id.scrollView);
+            Firebase reference1;
+            Firebase reference2;
 
             Firebase.setAndroidContext(this);
-            reference1= new Firebase(User.class.getName() + " " /* + User.class.chatWith */);
-            referenc2 = new Firebase(/*User.class.chatWith + */ " " + User.class.getName());
-
-            DrawerLayout drawerLayout;
-
+            reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /**/ + "_" + /**/);
+            reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /**/ + "_" + /**/);
 
 
             sendButton.setOnClickListener(new View.OnClickListener() {

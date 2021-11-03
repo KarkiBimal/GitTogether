@@ -17,7 +17,7 @@
             android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".EditProfilePageActivity"
             android:exported="false" />
         <activity
             android:name=".PostActivity"
