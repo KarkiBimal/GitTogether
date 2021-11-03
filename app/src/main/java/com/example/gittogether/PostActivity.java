@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PostActivity extends AppCompatActivity {
     private EditText editTextTitle, editTextMessage;
-    private Button postToFeedbtn;
+//    private Button postToFeedBtn;
     private DatabaseReference databaseReference;
     DrawerLayout drawerLayout;
 
@@ -38,36 +38,32 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+        databaseReference = FirebaseDatabase.getInstance().getReference(POSTS);
 
         editTextTitle = (EditText) findViewById(R.id.edit_post_title);
         editTextMessage = (EditText) findViewById(R.id.edit_post_message);
-        postToFeedbtn = (Button) findViewById(R.id.button_post);
 
         post = new Post();
 
-        postToFeedbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
-                // getting text from our edittext fields.
-                String title = editTextTitle.getText().toString();
-                String message = editTextMessage.getText().toString();
+    public void post(View view) {
+        // getting text from our edittext fields.
+        String title = editTextTitle.getText().toString();
+        String message = editTextMessage.getText().toString();
 
-                // below line is for checking weather the
-                // edittext fields are empty or not.
-                if (TextUtils.isEmpty(title) || TextUtils.isEmpty(message)) {
-                    // if the text fields are empty
-                    // then show the below message.
-                    Toast.makeText(PostActivity.this, "Please add some data.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // else call the method to add
-                    // data to our database.
-                    addPostToFirebase(title, message);
-                    Navigation.redirectActivity(PostActivity.this, MainActivity.class);
-                }
-            }
-        });
+        // below line is for checking weather the
+        // edittext fields are empty or not.
+        if (TextUtils.isEmpty(title) || TextUtils.isEmpty(message)) {
+            // if the text fields are empty
+            // then show the below message.
+            Toast.makeText(PostActivity.this, "Please add some data.", Toast.LENGTH_SHORT).show();
+        } else {
+            // else call the method to add
+            // data to our database.
+            addPostToFirebase(title, message);
+            Navigation.redirectActivity(PostActivity.this, MainActivity.class);
+        }
     }
 
     private void addPostToFirebase(String title, String message) {
