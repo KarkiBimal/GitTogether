@@ -89,10 +89,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         String address=editTextAddress.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
 
-
-        if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),SignUp.class));
-        }
+//
+//        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(),SignUp.class));
+//        }
 
         if(firstName.isEmpty()){
             editTextFirstName.setError("Please enter your First name.");
@@ -161,13 +161,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                     else if(!task.isSuccessful()){
-                                        //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                         Toast.makeText(SignUp.this, "User Not Registered", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                 }
                             });
-                        }else{
+                        }
+                        else{
                             startActivity(new Intent(getApplicationContext(),SignUp.class));
                         }
                     }
