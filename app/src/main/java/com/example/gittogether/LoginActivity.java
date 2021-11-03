@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                                             "Invalid email and password combination.", Toast.LENGTH_SHORT);
                                     toast.setGravity(Gravity.TOP, 0, 0);
                                     toast.show();
+
                                 } else {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(LoginActivity.this, "Logged in Sucessfully", Toast.LENGTH_SHORT).show();
