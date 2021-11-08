@@ -39,7 +39,7 @@ public class MessageActivity extends AppCompatActivity {
 
     public void ClickPost(View view){
         //Redirect activity to Post
-        Navigation.redirectActivity(this, PostActivity.class);
+        Navigation.redirectActivity(this, PostViewActivity.class);
     }
     public void ClickMessage(View view){
         //Recreate activity

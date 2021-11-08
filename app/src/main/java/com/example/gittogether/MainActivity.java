@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ClickPost(View view){
         //Redirect activity to home
-        Navigation.redirectActivity(this, PostActivity.class);
+        Navigation.redirectActivity(this, PostViewActivity.class);
     }
 
     public void ClickMessage(View view){
