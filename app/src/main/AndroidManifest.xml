@@ -22,6 +22,10 @@
         <activity
             android:name=".PostActivity"
             android:exported="false" />
+        <activity
+            android:name=".PostViewActivity"
+            android:exported="false" />
+
         <activity android:name=".MainActivity" />
 
         <meta-data

@@ -1,9 +1,13 @@
 package com.example.gittogether;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,12 +27,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class PostActivity extends AppCompatActivity {
     private EditText editTextTitle, editTextMessage;
-    private Button postToFeedbtn;
+    private Button uploadImageBtn;
     private DatabaseReference databaseReference;
     DrawerLayout drawerLayout;
+
+    private StorageReference storageReference;
+    FirebaseUser cUser;
+    String uId;
 
     private static final String POSTS="Post";
 
@@ -38,34 +51,78 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+        databaseReference = FirebaseDatabase.getInstance().getReference(POSTS);
+
+        // upload image references
+        storageReference = FirebaseStorage.getInstance().getReference();
+        cUser= FirebaseAuth.getInstance().getCurrentUser();
+        uId = cUser.getUid();
 
         editTextTitle = (EditText) findViewById(R.id.edit_post_title);
         editTextMessage = (EditText) findViewById(R.id.edit_post_message);
-        postToFeedbtn = (Button) findViewById(R.id.button_post);
+        uploadImageBtn = (Button) findViewById(R.id.upload_image_btn);
 
         post = new Post();
 
-        postToFeedbtn.setOnClickListener(new View.OnClickListener() {
+        //When user clicks Upload Picture button
+        uploadImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //open Gallery
+                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGalleryIntent, 1000);
+            }
+        });
 
-                // getting text from our edittext fields.
-                String title = editTextTitle.getText().toString();
-                String message = editTextMessage.getText().toString();
+    }
 
-                // below line is for checking weather the
-                // edittext fields are empty or not.
-                if (TextUtils.isEmpty(title) || TextUtils.isEmpty(message)) {
-                    // if the text fields are empty
-                    // then show the below message.
-                    Toast.makeText(PostActivity.this, "Please add some data.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // else call the method to add
-                    // data to our database.
-                    addPostToFirebase(title, message);
-                    Navigation.redirectActivity(PostActivity.this, MainActivity.class);
-                }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            if(resultCode == Activity.RESULT_OK){
+                //Save URI of chosen image
+                Uri imageUri = data.getData();
+                uploadImageToFirebase(imageUri);
+            }
+        }
+    }
+
+    public void post(View view) {
+        // getting text from our edittext fields.
+        String title = editTextTitle.getText().toString();
+        String message = editTextMessage.getText().toString();
+
+        if(title.isEmpty()){
+            editTextTitle.setError("Please enter a title.");
+            editTextTitle.requestFocus();
+            return;
+        }
+
+        if(message.isEmpty()){
+            editTextMessage.setError("Please enter a message.");
+            editTextMessage.requestFocus();
+            return;
+        }
+
+        addPostToFirebase(title, message);
+        Navigation.redirectActivity(PostActivity.this, MainActivity.class);
+    }
+
+    private void uploadImageToFirebase(Uri imageUri) {
+        //upload image to Firebase Storage
+        final StorageReference fileRef = storageReference.child("users/" + uId +"/post.jpg");
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(PostActivity.this, "Image Uploaded.", Toast.LENGTH_SHORT).show();
+                //Go back to profile page when uploading finished
+//                Navigation.redirectActivity(PostActivity.this, ProfilePage.class);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(PostActivity.this, "Failed", Toast.LENGTH_SHORT).show();
             }
         });
     }

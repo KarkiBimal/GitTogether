@@ -1,22 +1,17 @@
 package com.example.gittogether;
 
-import android.app.Activity;
-import android.content.Intent;
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -31,28 +26,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-//import com.squareup.picasso.Picasso;
-
-import static android.content.ContentValues.TAG;
 
 public class ProfilePage extends AppCompatActivity {
-    private Button updatePic;
+    private Button editProfile;
     private TextView changePic, uploadPic;
-    private DatabaseReference userRef;
     private StorageReference storageReference;
     private StorageReference photoReference;
+    private DatabaseReference userRef, userRef_1;
     private FirebaseDatabase database;
     private ImageView profilePicture;
     DrawerLayout drawerLayout;
 
 
-    TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3;
+    TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3,postContent;
     private static final String USERS="Users";
+    private static final String POST="Post";
     String email;
     FirebaseUser cUser;
     String uId;
-    Bitmap bmImg;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,24 +58,22 @@ public class ProfilePage extends AppCompatActivity {
         hobby1=(TextView) findViewById(R.id.hobby1);
         hobby2=(TextView) findViewById(R.id.hobby2);
         hobby3=(TextView) findViewById(R.id.hobby3);
+        postContent=(TextView) findViewById(R.id.postContent);
         cUser= FirebaseAuth.getInstance().getCurrentUser();
         uId=cUser.getUid();
         database= FirebaseDatabase.getInstance();
         userRef=database.getReference(USERS);
+        userRef_1=database.getReference(POST);
         profilePicture = findViewById(R.id.profile_pic);
-        updatePic = (Button) findViewById(R.id.updatePicButton);
+        editProfile = (Button) findViewById(R.id.updatePicButton);
         storageReference = FirebaseStorage.getInstance().getReference();
         photoReference= storageReference.child("users/" + uId + "/profile.jpg");
-
-//        profileImage = findViewById(R.id.profile_pic);
-//        changePic = (TextView) findViewById(R.id.change_pic);
-//        uploadPic = (TextView) findViewById(R.id.upload_pic);
 
         userEmail=(TextView) findViewById(R.id.email);
         name=(TextView) findViewById(R.id.name);
 
         final long ONE_MEGABYTE = 1024 * 1024;
-        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        photoReference.getBytes(2*ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -94,7 +83,7 @@ public class ProfilePage extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -117,58 +106,28 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
-        updatePic.setOnClickListener(new View.OnClickListener() {
+
+        userRef_1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postContent.setText(dataSnapshot.child(uId).child("message").getValue(String.class));
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //open Gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent, 1000);
+                Navigation.redirectActivity(ProfilePage.this, EditProfilePageActivity.class);
             }
         });
 
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            if(resultCode == Activity.RESULT_OK){
-                Uri imageUri = data.getData();
-                //profilePicture.setImageURI(imageUri);
-
-                uploadImageToFirebase(imageUri);
-            }
-        }
-    }
-
-    private void uploadImageToFirebase(Uri imageUri) {
-        //upload image to Firebase Storage
-        final StorageReference fileRef = storageReference.child("users/" + uId +"/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                final long ONE_MEGABYTE = 1024 * 1024;
-                photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                        profilePicture.setImageBitmap(bmp);
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
-                    }
-                });
-                Toast.makeText(ProfilePage.this, "Image Uploaded.", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProfilePage.this, "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void ClickMenu(View view){
@@ -188,7 +147,7 @@ public class ProfilePage extends AppCompatActivity {
 
     public void ClickPost(View view){
         //Redirect activity to home
-        Navigation.redirectActivity(this, PostActivity.class);
+        Navigation.redirectActivity(this, PostViewActivity.class);
     }
 
     public void ClickMessage(View view){

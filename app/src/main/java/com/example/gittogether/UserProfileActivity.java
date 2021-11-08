@@ -1,20 +1,28 @@
 package com.example.gittogether;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     private TextView changePic, uploadPic;
     DrawerLayout drawerLayout;
+    private StorageReference photoReference;
+    private StorageReference storageReference;
+    private ImageView profilePicture;
 
 
     TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3;
@@ -32,6 +40,8 @@ public class UserProfileActivity extends AppCompatActivity {
         hobby1=(TextView) findViewById(R.id.hobby1);
         hobby2=(TextView) findViewById(R.id.hobby2);
         hobby3=(TextView) findViewById(R.id.hobby3);
+        profilePicture = findViewById(R.id.profile_pic);
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
@@ -42,7 +52,23 @@ public class UserProfileActivity extends AppCompatActivity {
             hobby1.setText(extras.getString("hobby1"));
             hobby2.setText(extras.getString("hobby2"));
             hobby3.setText(extras.getString("hobby3"));
+            photoReference= storageReference.child("users/" + extras.getString("userID") + "/profile.jpg");
         }
+
+        final long ONE_MEGABYTE = 1024 * 1024;
+        photoReference.getBytes(2*ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                profilePicture.setImageBitmap(bmp);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                //Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void ClickMenu(View view){
@@ -62,7 +88,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
     public void ClickPost(View view){
         //Redirect activity to home
-        Navigation.redirectActivity(this, PostActivity.class);
+        Navigation.redirectActivity(this, PostViewActivity.class);
     }
 
     public void ClickMessage(View view){
