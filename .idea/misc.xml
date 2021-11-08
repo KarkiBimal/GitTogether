@@ -15,6 +15,8 @@
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/messages.xml" value="0.115625" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_drawer.xml" value="0.2296875" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_toolbar.xml" value="0.2296875" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.264" />
+        <entry key="..\:/Users/karki/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_sign_up.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/drawable/ic_send.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/layout/activity_edit_profile_page.xml" value="0.24583333333333332" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24583333333333332" />
@@ -24,7 +26,7 @@
         <entry key="app/src/main/res/layout/activity_profile_page.xml" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/item.xml"/>
+        <entry key="app/src/main/res/layout/item.xml" />
         <entry key="app/src/main/res/layout/nav_drawer.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_toolbar.xml" value="0.24583333333333332" />
       </map>

@@ -40,8 +40,7 @@
                         android:id="@+id/profile_pic"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
-                        android:adjustViewBounds="true"
-                        />
+                        android:adjustViewBounds="true" />
 
 
                 </RelativeLayout>
@@ -67,7 +66,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="267dp"
+                android:layout_marginTop="210dp"
                 android:layout_marginBottom="450dp"
                 android:background="@color/white"
                 android:gravity="center"
@@ -160,6 +159,21 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/postContent"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="280dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#0C0000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
         </RelativeLayout>
 
     </ScrollView>
@@ -169,8 +183,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/nav_toolbar"/>
+        <include layout="@layout/nav_toolbar" />
 
     </LinearLayout>
 
