@@ -3,12 +3,14 @@ package com.example.gittogether;
 import static com.example.gittogether.R.*;
 import static com.example.gittogether.R.layout.*;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.TextViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -23,14 +25,19 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,12 +49,41 @@ public class MessageActivity extends AppCompatActivity {
         EditText messageArea;
         ScrollView scrollView;
         DrawerLayout drawerLayout;
+        DatabaseReference database;
+        FirebaseUser cUser;
+        String uId;
+        String userName;
+        String currentU;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(activity_message);
+            database = FirebaseDatabase.getInstance().getReference("Users");
+            cUser = FirebaseAuth.getInstance().getCurrentUser();
+            currentU = cUser.getDisplayName();
+            //Log.d("tag", currentU);
+            uId = cUser.getUid();
+
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot snapshot) {
+
+                    currentU = snapshot.child(uId).child("firstName").getValue(String.class);
+                    currentU = currentU + "_" + snapshot.child(uId).child("lastName").getValue(String.class);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            Bundle extras = getIntent().getExtras();
+
+            userName = extras.getString("userName");
 
             layout = (LinearLayout)findViewById(R.id.layout1);
             sendButton = (ImageView)findViewById(R.id.sendButton);
@@ -55,26 +91,24 @@ public class MessageActivity extends AppCompatActivity {
             scrollView = (ScrollView)findViewById(R.id.scrollView);
             Firebase reference1;
             Firebase reference2;
-
             Firebase.setAndroidContext(this);
-            reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /*+*/  "_" /*+*/);
-            reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message" + /*+*/  "_" /*+*/);
+            reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message/" + currentU +  "-" + userName);
+            reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message/" + userName + "-" + currentU);
 
 
             sendButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String messageText = messageArea.getText().toString();
-                    //TextView name = (TextView) findViewById(id.name);
 
                     if(!messageText.equals("")){
                         Map<String, String> map = new HashMap<String, String>();
                         map.put("message", messageText);
-                        map.put("user", FirebaseDatabase.class.getName());
+                        map.put("user", currentU);
+                        reference1.push().setValue(map);
+                        reference2.push().setValue(map);
                     }
-
                 }
-
             });
 
             reference1.addChildEventListener(new ChildEventListener() {
