@@ -3,30 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.41574074074074074" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_main2.xml" value="0.19791666666666666" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.176" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_sign_up.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.21693840579710144" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/item.xml" value="0.2" />
+        <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/layout/user_list_item.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/GitTogether/app/src/main/res/xml/actions.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_edit_profile_page.xml" value="0.2" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_profile_page.xml" value="0.264" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.136" />
-        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/messages.xml" value="0.115625" />
+        <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_drawer.xml" value="0.2296875" />
         <entry key="..\:/Users/banay/AndroidStudioProjects/GitTogether/app/src/main/res/layout/nav_toolbar.xml" value="0.2296875" />
-        <entry key="app/src/main/res/drawable/ic_send.xml" value="0.2630208333333333" />
-        <entry key="app/src/main/res/layout/activity_edit_profile_page.xml" value="0.24583333333333332" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24583333333333332" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
-        <entry key="app/src/main/res/layout/activity_message.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/activity_post.xml" value="0.24583333333333332" />
-        <entry key="app/src/main/res/layout/activity_profile_page.xml" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.12552083333333333" />
-        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/item.xml"/>
-        <entry key="app/src/main/res/layout/nav_drawer.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/nav_toolbar.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/activity_edit_profile_page.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10023866348448687" />
+        <entry key="app/src/main/res/layout/activity_message.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/activity_post.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/activity_post_view.xml" value="0.1037037037037037" />
+        <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.17675224049573557" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/item.xml" value="0.5911458333333334" />
+        <entry key="app/src/main/res/layout/nav_toolbar.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/post_item.xml" value="0.612049728613581" />
       </map>
     </option>
   </component>

@@ -20,4 +20,6 @@
     <string name="post">Post</string>
     <string name="post_header">Post to Feed</string>
     <string name="upload_image">Upload Image</string>
+    <string name="title_here">Title here</string>
+    <string name="message_here">Message goes here.</string>
 </resources>

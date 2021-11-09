@@ -1,28 +1,21 @@
 package com.example.gittogether;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class UserProfileActivity extends AppCompatActivity {
 
     private TextView changePic, uploadPic;
     DrawerLayout drawerLayout;
-    private StorageReference photoReference;
-    private StorageReference storageReference;
-    private ImageView profilePicture;
 
 
     TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3;
@@ -40,8 +33,6 @@ public class UserProfileActivity extends AppCompatActivity {
         hobby1=(TextView) findViewById(R.id.hobby1);
         hobby2=(TextView) findViewById(R.id.hobby2);
         hobby3=(TextView) findViewById(R.id.hobby3);
-        profilePicture = findViewById(R.id.profile_pic);
-        storageReference = FirebaseStorage.getInstance().getReference();
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
@@ -52,23 +43,22 @@ public class UserProfileActivity extends AppCompatActivity {
             hobby1.setText(extras.getString("hobby1"));
             hobby2.setText(extras.getString("hobby2"));
             hobby3.setText(extras.getString("hobby3"));
-            photoReference= storageReference.child("users/" + extras.getString("userID") + "/profile.jpg");
         }
 
-        final long ONE_MEGABYTE = 1024 * 1024;
-        photoReference.getBytes(2*ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                profilePicture.setImageBitmap(bmp);
+        Button btn = (Button)findViewById(R.id.button);
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(@NonNull Exception exception) {
-                //Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+                intent.putExtra("userName", extras.getString("firstName") + "_" + extras.getString("lastName"));
+
+                startActivity(intent);
             }
         });
+
+
+
     }
 
     public void ClickMenu(View view){

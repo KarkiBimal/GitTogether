@@ -17,11 +17,15 @@
             android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfilePageActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".PostActivity"
             android:exported="false" />
+        <activity
+            android:name=".PostViewActivity"
+            android:exported="false" />
+
         <activity android:name=".MainActivity" />
 
         <meta-data

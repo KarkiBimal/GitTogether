@@ -49,7 +49,7 @@ public class Navigation extends AppCompatActivity {
 
     public void ClickPost(View view){
         //Redirect activity to post
-        redirectActivity(this, PostActivity.class);
+        redirectActivity(this, PostViewActivity.class);
     }
 
     public void ClickMessage(View view){
