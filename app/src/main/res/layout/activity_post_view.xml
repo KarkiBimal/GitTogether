@@ -20,6 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:id="@+id/post_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToPost"
+            android:shadowColor="#000000"
+            android:text="@string/post_to_feed" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/PostRecyclerView"
             android:layout_width="match_parent"
