@@ -32,7 +32,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView changePic, uploadPic;
     private StorageReference storageReference;
     private StorageReference photoReference;
-    private DatabaseReference userRef, userRef_1;
+    private DatabaseReference userRef;
     private FirebaseDatabase database;
     private ImageView profilePicture;
     DrawerLayout drawerLayout;
@@ -58,12 +58,10 @@ public class ProfilePage extends AppCompatActivity {
         hobby1=(TextView) findViewById(R.id.hobby1);
         hobby2=(TextView) findViewById(R.id.hobby2);
         hobby3=(TextView) findViewById(R.id.hobby3);
-        postContent=(TextView) findViewById(R.id.postContent);
         cUser= FirebaseAuth.getInstance().getCurrentUser();
         uId=cUser.getUid();
         database= FirebaseDatabase.getInstance();
         userRef=database.getReference(USERS);
-        userRef_1=database.getReference(POST);
         profilePicture = findViewById(R.id.profile_pic);
         editProfile = (Button) findViewById(R.id.updatePicButton);
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -107,19 +105,7 @@ public class ProfilePage extends AppCompatActivity {
         });
 
 
-        userRef_1.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                postContent.setText(dataSnapshot.child(uId).child("message").getValue(String.class));
 
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override

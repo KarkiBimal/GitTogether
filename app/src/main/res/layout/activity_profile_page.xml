@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgUser"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15sp"
+                    android:layout_marginTop="20sp"
                     android:background="@color/white"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
@@ -66,7 +66,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="210dp"
+                android:layout_marginTop="240dp"
                 android:layout_marginBottom="450dp"
                 android:background="@color/white"
                 android:gravity="center"
@@ -158,21 +158,6 @@
                     android:text="" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/postContent"
-                android:layout_width="match_parent"
-                android:layout_height="53dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="280dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="#0C0000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
         </RelativeLayout>
 

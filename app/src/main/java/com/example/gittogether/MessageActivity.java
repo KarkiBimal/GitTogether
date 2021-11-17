@@ -1,5 +1,6 @@
 package com.example.gittogether;
 
+import static android.content.ContentValues.TAG;
 import static com.example.gittogether.R.*;
 import static com.example.gittogether.R.layout.*;
 
@@ -56,6 +57,7 @@ public class MessageActivity extends AppCompatActivity {
         String currentU;
 
 
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -63,7 +65,6 @@ public class MessageActivity extends AppCompatActivity {
             database = FirebaseDatabase.getInstance().getReference("Users");
             cUser = FirebaseAuth.getInstance().getCurrentUser();
             currentU = cUser.getDisplayName();
-            //Log.d("tag", currentU);
             uId = cUser.getUid();
 
             database.addValueEventListener(new ValueEventListener() {
@@ -72,6 +73,7 @@ public class MessageActivity extends AppCompatActivity {
 
                     currentU = snapshot.child(uId).child("firstName").getValue(String.class);
                     currentU = currentU + "_" + snapshot.child(uId).child("lastName").getValue(String.class);
+
 
                 }
 
@@ -92,6 +94,7 @@ public class MessageActivity extends AppCompatActivity {
             Firebase reference1;
             Firebase reference2;
             Firebase.setAndroidContext(this);
+            Log.i(TAG, "onCreate:" + currentU);
             reference1 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message/" + currentU +  "-" + userName);
             reference2 = new Firebase("https://gittogether-13f65-default-rtdb.firebaseio.com/Message/" + userName + "-" + currentU);
 
@@ -123,6 +126,7 @@ public class MessageActivity extends AppCompatActivity {
                     }
                     else{
                         addMessageBox(/*User.class.chatWith + */ ":-\n" + message, 2);
+
                     }
                 }
 
