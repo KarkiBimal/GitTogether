@@ -17,7 +17,7 @@
             android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".EditProfilePageActivity"
             android:exported="false" />
         <activity
             android:name=".PostActivity"
@@ -25,6 +25,7 @@
         <activity
             android:name=".PostViewActivity"
             android:exported="false" />
+
 
         <activity android:name=".MainActivity" />
 
@@ -44,6 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUp" />
+
     </application>
 
 </manifest>
