@@ -111,6 +111,7 @@ public class MessageActivity extends AppCompatActivity {
                         reference1.push().setValue(map);
                         reference2.push().setValue(map);
                     }
+                    messageArea.setText("");
                 }
             });
 
