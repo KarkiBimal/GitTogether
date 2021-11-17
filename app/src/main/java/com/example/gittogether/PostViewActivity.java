@@ -118,8 +118,10 @@ public class PostViewActivity extends AppCompatActivity {
                     Post post = dataSnapshot.getValue(Post.class);
 
                     for (User usr : users) {
-                        if(usr.userID.equals(dataSnapshot.getKey())){
-                            tmpUsr = new User(usr.firstName, usr.lastName, usr.email, usr.hobby1, usr.hobby2, usr.hobby3, usr.address);
+                        if(usr.userID != null){
+                            if(usr.userID.equals(dataSnapshot.getKey())){
+                                tmpUsr = new User(usr.firstName, usr.lastName, usr.email, usr.hobby1, usr.hobby2, usr.hobby3, usr.address);
+                            }
                         }
                     }
 
