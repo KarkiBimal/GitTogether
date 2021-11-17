@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,8 @@ public class PostViewActivity extends AppCompatActivity {
     String mTitle;
     String mMessage;
     User tmpUsr;
+    StorageReference storageReference;
+    StorageReference photoReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,8 @@ public class PostViewActivity extends AppCompatActivity {
         uId = cUser.getUid();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        storageReference = FirebaseStorage.getInstance().getReference();
+        photoReference = storageReference.child("users/" + uId + "/profile.jpg");
 
         PostList = new ArrayList<>();
         UserList = new ArrayList<>();
@@ -70,7 +76,9 @@ public class PostViewActivity extends AppCompatActivity {
                 intent.putExtra("hobby1", UserList.get(position).getHobby1());
                 intent.putExtra("hobby2", UserList.get(position).getHobby2());
                 intent.putExtra("hobby3", UserList.get(position).getHobby3());
-                intent.putExtra("userID",UserList.get(position).getuserID());
+                intent.putExtra("userID", UserList.get(position).getuserID());
+//                intent.putExtra("profile_pic", )
+//                intent.putExtra("uId", UserList.get(position).getuserID());
                 startActivity(intent);
 //                Navigation.redirectActivity(PostViewActivity.this, UserProfileActivity.class);
             }
@@ -116,8 +124,8 @@ public class PostViewActivity extends AppCompatActivity {
                     }
 
                     mTitle = post.getTitle();
-                    if(mTitle != null && mTitle.equals(title))
-                        continue;
+//                    if(mTitle != null && mTitle.equals(title))
+//                        continue;
                     mMessage = post.getMessage();
 
                     if( mTitle != null && mMessage != null ) {
