@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgUser"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20sp"
+                    android:layout_marginTop="15sp"
                     android:background="@color/white"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
@@ -66,7 +66,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="240dp"
+                android:layout_marginTop="210dp"
                 android:layout_marginBottom="450dp"
                 android:background="@color/white"
                 android:gravity="center"
@@ -82,7 +82,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="280dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -158,6 +158,8 @@
                     android:text="" />
 
             </LinearLayout>
+
+
 
         </RelativeLayout>
 

@@ -38,9 +38,8 @@ public class ProfilePage extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
 
-    TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3,postContent;
+    TextView userEmail, name, lastname, address, hobby1, hobby2, hobby3;
     private static final String USERS="Users";
-    private static final String POST="Post";
     String email;
     FirebaseUser cUser;
     String uId;
@@ -103,9 +102,6 @@ public class ProfilePage extends AppCompatActivity {
 
             }
         });
-
-
-
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
